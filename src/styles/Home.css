@@ -1,0 +1,22 @@
+.dashboard {
+    height: 100dvh;
+    width: 100dvw;
+
+    .navbar {
+        position: relative;
+    }
+
+    .task_container {
+        width: 80%;
+        margin: auto;
+        position: absolute;
+        top: 100px;
+        left: 150px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .task_container {
+        left: 40px !important;
+    }
+}
