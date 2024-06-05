@@ -237,6 +237,7 @@ export default function EnhancedTable({ open, handleModal }: { open: boolean; ha
         const isAsc = orderBy === property && order === 'asc';
         setOrder(isAsc ? 'desc' : 'asc');
         setOrderBy(property);
+        return event
     };
 
     const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -265,10 +266,12 @@ export default function EnhancedTable({ open, handleModal }: { open: boolean; ha
             );
         }
         setSelected(newSelected);
+        return event
     };
 
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage);
+        return event
     };
 
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
