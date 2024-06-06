@@ -2,7 +2,7 @@ import Dashboard from "./modules/Home"
 
 const App = () => {
   return (
-    <main>
+    <main >
       <Dashboard />
     </main>
   )

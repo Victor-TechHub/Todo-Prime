@@ -1,13 +1,14 @@
 import { createContext, useContext, useState } from 'react'
 import { TaskCtxType, childNode, userTasksDataType } from '../types/Task'
-import { addDoc, collection, onSnapshot, query, serverTimestamp, updateDoc } from 'firebase/firestore'
+import { addDoc, collection, deleteDoc, doc, onSnapshot, query, serverTimestamp, updateDoc } from 'firebase/firestore'
 import { database } from '../lib/firebase'
 import { toast } from 'react-toastify'
 
 const TaskCtx = createContext<TaskCtxType>({
     addNewTask: async () => { },
     getUserTasks: async () => { },
-    userTasks: undefined
+    userTasks: undefined,
+    deleteTasks: async () => { }
 })
 
 const TaskCtxProvider = ({ children }: childNode): JSX.Element => {
@@ -31,6 +32,15 @@ const TaskCtxProvider = ({ children }: childNode): JSX.Element => {
             await updateDoc(task, { id: task.id })
         } catch (err) {
             err instanceof Error && toast.error(err.message)
+        }
+    }
+
+    const deleteTasks = async (id: any): Promise<void> => {
+        try {
+            await deleteDoc(doc(database, "task", id))
+        } catch (err) {
+            err instanceof Error && toast.error(err.message)
+            console.log("Can't delete: ", err)
         }
     }
 
@@ -58,7 +68,8 @@ const TaskCtxProvider = ({ children }: childNode): JSX.Element => {
     const values = {
         addNewTask,
         getUserTasks,
-        userTasks
+        userTasks,
+        deleteTasks
     }
 
     return <TaskCtx.Provider value={values}>{children}</TaskCtx.Provider>

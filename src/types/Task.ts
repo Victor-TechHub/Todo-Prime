@@ -19,6 +19,7 @@ export interface Data {
 export type Order = 'asc' | 'desc';
 
 export interface EnhancedTableToolbarProps {
+    id: any
     numSelected: number;
     handleModal: () => void
 }
@@ -40,6 +41,7 @@ export interface TaskCtxType {
     addNewTask: (title: string, created: string, target: string, level: string) => Promise<void>
     getUserTasks: () => Promise<void>
     userTasks: userTasksDataType[] | undefined
+    deleteTasks: (id: any) => Promise<void>
 }
 
 export interface userTasksDataType {

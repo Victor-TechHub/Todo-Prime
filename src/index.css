@@ -2,8 +2,33 @@
 
 * {
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+:root {
+  --bg: rgb(231, 229, 221);
+  --bg-light: rgb(231, 229, 221);
+  --text-clr: rgb(79, 76, 76);
+  --primary-clr: linear-gradient(to left, rgb(242, 163, 114), rgb(239, 119, 7));
+  --box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+}
+
+[data-theme="dark"] {
+  --bg: rgb(29, 28, 27);
+  --bg-light: rgb(34, 33, 33);
+  --text-clr: #beb8b8;
+  --primary-clr: linear-gradient(to left, rgb(126, 140, 252), rgb(11, 69, 177));
+}
+
+body {
+  background-color: var(--bg);
+}
+
+main {
+  background-color: var(--bg);
+  transition: background 500ms;
+  height: 100dvh;
 }
