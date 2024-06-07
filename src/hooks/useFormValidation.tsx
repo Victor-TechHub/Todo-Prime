@@ -2,7 +2,6 @@ import { FormType } from "@/types/Task"
 import { schema } from "@/utils/zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { FieldErrors, UseFormHandleSubmit, UseFormRegister, useForm } from "react-hook-form"
-
 interface IuseFormValidation {
     register: UseFormRegister<FormType>
     handleSubmit: UseFormHandleSubmit<FormType, undefined>
@@ -18,9 +17,7 @@ const useFormValidation = (): IuseFormValidation => {
     } = useForm<FormType>({
         resolver: zodResolver(schema)
     })
-    const onsubmit = (data: FormType) => {
-        console.log(data)
-    }
+    const onsubmit = (data: FormType) => console.log(data)
 
     return { register, handleSubmit, errors, onsubmit }
 }

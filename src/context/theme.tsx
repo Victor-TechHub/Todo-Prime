@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react"
 import { childNode } from "../types/Task"
 import useLocalStorage from "use-local-storage"
+
 const ThemeCtx = createContext({
     isDarkTheme: false,
     toggleTheme: () => { }
@@ -8,7 +9,6 @@ const ThemeCtx = createContext({
 
 export const ThemeCtxProvider = ({ children }: childNode): JSX.Element => {
     const [isDarkTheme, setIsDarkTheme] = useLocalStorage("THEME", false)
-
     const toggleTheme = (): void => setIsDarkTheme((state) => !state)
 
     const values = {

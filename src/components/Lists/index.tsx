@@ -7,7 +7,6 @@ const Lists = () => {
     const { userTasks, getUserTasks } = useTaskCtx()
 
     useEffect(() => {
-        //get tasks
         getUserTasks()
     }, [userTasks])
 
@@ -23,7 +22,6 @@ const Lists = () => {
                             <input
                                 id={task.title}
                                 type="checkbox"
-
                             />
                             <label htmlFor={task.title}>{task.title}</label>
                         </div>

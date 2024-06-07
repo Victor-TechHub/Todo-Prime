@@ -7,7 +7,16 @@ const ProtectedRoutes = ({ children }: { children: React.ReactNode }) => {
     // const { currentUser } = useAuthCtx()
     let user = true
     return (
-        <>{!!user ? children : <Navigate to={PUBLIC_PATH.SIGNIN} replace />}</>
+        <>
+            {
+                !!user
+                    ? children
+                    : <Navigate
+                        to={PUBLIC_PATH.SIGNIN}
+                        replace
+                    />
+            }
+        </>
     )
 }
 

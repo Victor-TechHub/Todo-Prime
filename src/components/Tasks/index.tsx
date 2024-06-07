@@ -1,23 +1,19 @@
 import "./style.css"
 import { navs } from "./utils"
 import { useThemeCtx } from "../../context/theme"
-import { useState } from "react"
 import Navbar from "../nav"
 import { FaGithub } from "react-icons/fa";
 import Lists from "../Lists"
 import TaskForm from "../form"
 import { SlArrowLeftCircle } from "react-icons/sl";
 import { motion, AnimatePresence } from "framer-motion"
+import useTasksUtils from "./hooks/useTasksUtils"
 
 const Tasks = () => {
+    //theme context api's
     const { isDarkTheme, toggleTheme } = useThemeCtx()
-    const [index, setIndex] = useState(0)
-    const [showForm, setShowForm] = useState(false)
-    const [showNav, setShowNavbar] = useState(false)
 
-    const toggleNavBar = (): void => setShowNavbar(state => !state)
-
-    const handleClick = (): void => setShowForm(state => !state)
+    const { toggleNavBar, showForm, showNav, index, setIndex, handleClick } = useTasksUtils()
 
     return (
         <main data-theme={isDarkTheme ? "dark" : "light"}>
@@ -48,7 +44,10 @@ const Tasks = () => {
                                 <ul>
                                     {navs.map((nav, idx) => {
                                         return (
-                                            <li key={idx} className={index === idx ? "active" : ""} onClick={() => setIndex(idx)}>
+                                            <li
+                                                key={idx}
+                                                className={index === idx ? "active" : ""}
+                                                onClick={() => setIndex(idx)}>
                                                 <nav.icon size={15} />
                                                 {nav.name}
                                             </li>
@@ -84,7 +83,10 @@ const Tasks = () => {
                                 <ul>
                                     {navs.map((nav, idx) => {
                                         return (
-                                            <li key={idx} className={index === idx ? "active" : ""} onClick={() => setIndex(idx)}>
+                                            <li
+                                                key={idx}
+                                                className={index === idx ? "active" : ""}
+                                                onClick={() => setIndex(idx)}>
                                                 <nav.icon size={15} />
                                                 {nav.name}
                                             </li>

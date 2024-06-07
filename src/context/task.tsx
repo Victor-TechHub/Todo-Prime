@@ -27,8 +27,8 @@ const TaskCtxProvider = ({ children }: childNode): JSX.Element => {
                 isCompleted,
                 set: serverTimestamp()
             })
-            toast.success("🤩 Task has been added!")
             await updateDoc(task, { id: task.id })
+            toast.success("🤩 Task has been added!")
         } catch (err) {
             err instanceof Error && toast.error(err.message)
         }
@@ -39,19 +39,13 @@ const TaskCtxProvider = ({ children }: childNode): JSX.Element => {
             await deleteDoc(doc(database, "task", id))
         } catch (err) {
             err instanceof Error && toast.error(err.message)
-            console.log("Can't delete: ", err)
+            console.log("Error deleting task: ", err)
         }
     }
 
     const getUserTasks = async (): Promise<void> => {
         try {
             const q = query(collection(database, "tasks"))
-            // const querySnapShot = await getDocs(q)
-            // querySnapShot.forEach(doc => {
-            //     let arr: userTasksDataType[] = []
-            //     arr?.push({ id: doc.id, ...doc.data() } as userTasksDataType)
-            //     setUserTasks(arr)
-            // })
             onSnapshot(q, (snapshot) => {
                 let arr: userTasksDataType[] = []
                 snapshot.forEach(doc => {

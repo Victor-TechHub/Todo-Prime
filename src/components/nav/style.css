@@ -9,12 +9,12 @@
     min-width: 800px;
 
     .logo {
-        span:first-child {
-            color: var(--text-clr);
-        }
-
         span {
             font-size: 3em;
+        }
+
+        span:first-child {
+            color: var(--text-clr);
         }
 
         span:last-child {
@@ -37,13 +37,12 @@
             transition: 200ms;
         }
     }
-
-
-
 }
 
-@media screen and (max-width: 550px) {
 
+/* MOBILE */
+/* //////////////////////////////////////////////////////////////// */
+@media screen and (max-width: 550px) {
     .header {
         min-width: 300px;
 
@@ -52,7 +51,6 @@
         }
 
         .burger.animate_burger {
-
             div:first-child {
                 transform: rotate(49deg) translateY(6px);
             }
@@ -61,7 +59,6 @@
                 transform: rotate(-49deg) translateY(-7px);
             }
         }
-
     }
 
 }

@@ -5,7 +5,6 @@ import { FieldError, UseFormRegister } from "react-hook-form";
 export type childNode = {
     children: ReactNode
 }
-
 export interface TaskCtxType {
     addNewTask: (title: string, created: string, isCompleted: boolean) => Promise<void>
     getUserTasks: () => Promise<void>
