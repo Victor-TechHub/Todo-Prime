@@ -1,13 +1,13 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext } from "react"
 import { childNode } from "../types/Task"
-
+import useLocalStorage from "use-local-storage"
 const ThemeCtx = createContext({
     isDarkTheme: false,
     toggleTheme: () => { }
 })
 
 export const ThemeCtxProvider = ({ children }: childNode): JSX.Element => {
-    const [isDarkTheme, setIsDarkTheme] = useState(false)
+    const [isDarkTheme, setIsDarkTheme] = useLocalStorage("THEME", false)
 
     const toggleTheme = (): void => setIsDarkTheme((state) => !state)
 

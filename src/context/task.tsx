@@ -14,9 +14,9 @@ const TaskCtx = createContext<TaskCtxType>({
 const TaskCtxProvider = ({ children }: childNode): JSX.Element => {
     const [userTasks, setUserTasks] = useState<userTasksDataType[] | undefined>(undefined)
 
-    const addNewTask = async (title: string, created: string, target: string, level: string): Promise<void> => {
+    const addNewTask = async (title: string, created: string, isCompleted: boolean): Promise<void> => {
         try {
-            if (!title || !created || !target || !level) {
+            if (!title || !created) {
                 toast.error("🔐 fields cannot be empty")
                 return
             }
@@ -24,8 +24,7 @@ const TaskCtxProvider = ({ children }: childNode): JSX.Element => {
             const task = await addDoc(collection(database, "tasks"), {
                 title,
                 created,
-                target,
-                level,
+                isCompleted,
                 set: serverTimestamp()
             })
             toast.success("🤩 Task has been added!")

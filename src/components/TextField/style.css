@@ -1,0 +1,25 @@
+ .inputField {
+     display: flex;
+     flex-direction: column;
+     color: var(--text-clr);
+
+     span {
+         color: red;
+         font-size: 10px;
+     }
+
+     input {
+         border: 1px solid rgba(123, 121, 121, 0.418);
+         background: rgba(79, 76, 76, 0.196);
+         padding: .5em;
+         border-radius: 5px;
+         outline: none;
+         color: var(--text-clr);
+         transition-duration: 250ms;
+
+         &:hover {
+             border-color: rgba(123, 121, 121, 0.896);
+         }
+     }
+
+ }

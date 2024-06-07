@@ -3,18 +3,65 @@
     position: fixed;
     left: 21%;
     top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 800px;
 
-    span:first-child {
-        color: var(--text-clr);
+    .logo {
+        span:first-child {
+            color: var(--text-clr);
+        }
+
+        span {
+            font-size: 3em;
+        }
+
+        span:last-child {
+            background: var(--primary-clr);
+            background-clip: text;
+            color: transparent;
+        }
     }
 
-    span {
-        font-size: 3em;
+    .burger {
+        cursor: pointer;
+        display: grid;
+        gap: .5em;
+        opacity: 0;
+
+        div {
+            width: 30px;
+            height: 3px;
+            background: var(--primary-clr);
+            transition: 200ms;
+        }
     }
 
-    span:last-child {
-        background: var(--primary-clr);
-        background-clip: text;
-        color: transparent;
+
+
+}
+
+@media screen and (max-width: 550px) {
+
+    .header {
+        min-width: 300px;
+
+        .burger {
+            opacity: 1 !important;
+        }
+
+        .burger.animate_burger {
+
+            div:first-child {
+                transform: rotate(49deg) translateY(6px);
+            }
+
+            div:last-child {
+                transform: rotate(-49deg) translateY(-7px);
+            }
+        }
+
     }
+
 }

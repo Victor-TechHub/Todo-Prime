@@ -14,6 +14,7 @@
   --text-clr: rgb(79, 76, 76);
   --primary-clr: linear-gradient(to left, rgb(242, 163, 114), rgb(239, 119, 7));
   --box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+  --secondary-clr: rgb(239, 119, 7);
 }
 
 [data-theme="dark"] {
@@ -21,6 +22,7 @@
   --bg-light: rgb(34, 33, 33);
   --text-clr: #beb8b8;
   --primary-clr: linear-gradient(to left, rgb(126, 140, 252), rgb(11, 69, 177));
+  --secondary-clr: rgb(11, 69, 177);
 }
 
 body {

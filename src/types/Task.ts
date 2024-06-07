@@ -1,44 +1,13 @@
 import { FieldValue } from "firebase/firestore";
-import React, { ReactNode } from "react";
-
-export interface HeadCell {
-    disablePadding: boolean;
-    id: keyof Data;
-    label: string;
-    numeric: boolean;
-}
-
-export interface Data {
-    id: number;
-    createdAt: number | string;
-    targetDate: number | string;
-    name: string;
-    level: string;
-}
-
-export type Order = 'asc' | 'desc';
-
-export interface EnhancedTableToolbarProps {
-    id: any
-    numSelected: number;
-    handleModal: () => void
-}
-
-export interface EnhancedTableProps {
-    numSelected: number;
-    onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
-    onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    order: Order;
-    orderBy: string;
-    rowCount: number;
-}
+import { ReactNode } from "react";
+import { FieldError, UseFormRegister } from "react-hook-form";
 
 export type childNode = {
     children: ReactNode
 }
 
 export interface TaskCtxType {
-    addNewTask: (title: string, created: string, target: string, level: string) => Promise<void>
+    addNewTask: (title: string, created: string, isCompleted: boolean) => Promise<void>
     getUserTasks: () => Promise<void>
     userTasks: userTasksDataType[] | undefined
     deleteTasks: (id: any) => Promise<void>
@@ -48,7 +17,23 @@ export interface userTasksDataType {
     id: any
     title: string
     created: string
-    target: string
-    level: "low" | "medium" | "high"
+    isCompleted: boolean
     set: FieldValue
 }
+
+export type TextFieldTypes = {
+    error: FieldError | undefined
+    register: UseFormRegister<FormType>
+    type?: string
+    placeholder?: string
+    label: string
+    name: InputNames
+}
+
+export type FormType = {
+    title: string
+    description: string
+    date: string
+}
+
+export type InputNames = "title" | "description" | "date"

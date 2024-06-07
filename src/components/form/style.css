@@ -1,0 +1,22 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: .3em;
+
+    .submit_btn {
+        border: 1px solid rgba(123, 121, 121, 0.418);
+        background: rgba(79, 76, 76, 0.196);
+        padding: .5em;
+        border-radius: 5px;
+        color: var(--text-clr);
+        margin-block: 1em;
+        cursor: pointer;
+        transition: 250ms;
+
+        &:hover {
+            background: rgba(122, 120, 120, 0.196);
+        }
+    }
+}
+
+@media screen and (max-width: 550px) {}
