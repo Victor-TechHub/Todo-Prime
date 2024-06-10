@@ -8,6 +8,7 @@ import TaskForm from "../form"
 import { SlArrowLeftCircle } from "react-icons/sl";
 import { motion, AnimatePresence } from "framer-motion"
 import useTasksUtils from "./hooks/useTasksUtils"
+import Toast from "@/Helpers/Toast";
 
 const Tasks = () => {
     //theme context api's
@@ -18,6 +19,7 @@ const Tasks = () => {
     return (
         <main data-theme={isDarkTheme ? "dark" : "light"}>
             <Navbar toggleNavBar={toggleNavBar} showNav={showNav} />
+            <Toast />
             <section className="main">
                 {/* Navigation Container */}
                 <AnimatePresence>
@@ -120,7 +122,7 @@ const Tasks = () => {
                                     <p>Tasks</p>
                                 </header>
                                 {
-                                    !showForm
+                                    showForm
                                         ?
                                         <Lists />
                                         :
@@ -153,7 +155,6 @@ const Tasks = () => {
                             </motion.article>
                             :
                             <motion.article
-                                className={!showNav ? "show" : "hide"}
                                 initial={{ y: 70, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ duration: 1, type: "spring", stiffness: 200, }}

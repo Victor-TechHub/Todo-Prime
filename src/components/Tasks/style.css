@@ -247,6 +247,9 @@
 @media screen and (max-width: 550px) {
     article {
         min-width: 300px;
+        transition-property: display;
+        transition-duration: 1s;
+        transition-behavior: allow-discrete;
 
         .controls {
             min-width: 300px;

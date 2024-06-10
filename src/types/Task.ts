@@ -6,10 +6,11 @@ export type childNode = {
     children: ReactNode
 }
 export interface TaskCtxType {
-    addNewTask: (title: string, created: string, isCompleted: boolean) => Promise<void>
+    addNewTask: (title: string, created: string, description: string) => Promise<void>
     getUserTasks: () => Promise<void>
     userTasks: userTasksDataType[] | undefined
     deleteTasks: (id: any) => Promise<void>
+    updateCompletedTasks: (id: any, isChecked: boolean) => Promise<void>
 }
 
 export interface userTasksDataType {

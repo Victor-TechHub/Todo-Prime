@@ -1,18 +1,21 @@
-import { initializeApp } from "firebase/app";
+import { getApp, getApps, initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "todo-app-full-stack.firebaseapp.com",
-  projectId: "todo-app-full-stack",
-  storageBucket: "todo-app-full-stack.appspot.com",
-  messagingSenderId: "523554615144",
-  appId: "1:523554615144:web:e8fcf3add17937846ef0dd"
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
-const app = initializeApp(firebaseConfig);
+const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+
+// const app = initializeApp(firebaseConfig);
 const database = getFirestore(app)
 const auth = getAuth(app)
+
 
 export { database, auth }

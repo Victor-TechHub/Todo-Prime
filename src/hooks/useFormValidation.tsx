@@ -1,3 +1,4 @@
+import { useTaskCtx } from "@/context/task"
 import { FormType } from "@/types/Task"
 import { schema } from "@/utils/zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -9,7 +10,10 @@ interface IuseFormValidation {
     onsubmit: (data: FormType) => void
 }
 
+
 const useFormValidation = (): IuseFormValidation => {
+    const { addNewTask } = useTaskCtx()
+
     const {
         register,
         handleSubmit,
@@ -17,7 +21,10 @@ const useFormValidation = (): IuseFormValidation => {
     } = useForm<FormType>({
         resolver: zodResolver(schema)
     })
-    const onsubmit = (data: FormType) => console.log(data)
+    const onsubmit = (data: FormType) => {
+        const { date, description, title } = data
+        addNewTask(title, date, description)
+    }
 
     return { register, handleSubmit, errors, onsubmit }
 }
