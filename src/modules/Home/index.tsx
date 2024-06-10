@@ -1,4 +1,3 @@
-import "../../styles/Home.css"
 import Tasks from "../../components/Tasks"
 
 const Dashboard = () => {
