@@ -5,7 +5,6 @@ import { useAuthCtx } from '../context'
 
 const ProtectedRoutes = ({ children }: { children: React.ReactNode }) => {
     const { currentUser } = useAuthCtx()
-    // let user = true
     return (
         <>
             {
